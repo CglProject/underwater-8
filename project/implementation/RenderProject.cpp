@@ -79,7 +79,7 @@ void RenderProject::initFunction()
 	bRenderer().getObjects()->loadObjModel("zahnrad-neu.obj", true, true, false, 2, true, false);
 	bRenderer().getObjects()->loadObjModel("seats.obj", true, true, false, 2, true, false);
 	bRenderer().getObjects()->loadObjModel("aquaplant1-r.obj", true, true, false, 2, true, false);
-	//bRenderer().getObjects()->loadObjModel("aquaplant2-r.obj", true, true, false, 2, true, false);
+	bRenderer().getObjects()->loadObjModel("aquaplant2-r.obj", true, true, false, 2, true, false);
 	bRenderer().getObjects()->loadObjModel("aquaplant4.obj", true, true, false, 2, true, false);
 	bRenderer().getObjects()->loadObjModel("aquaplant5.obj", true, true, false, 2, true, false);
 	bRenderer().getObjects()->loadObjModel("suitcase.obj", true, true, false, 2, true, false);
@@ -353,7 +353,7 @@ void RenderProject::updateRenderQueue(const std::string &camera, const double &d
 	modelMatrix *= vmml::create_rotation(M_PI_2_F, vmml::Vector3f(0.0f, 1.f, 0.f));
 	bRenderer().getModelRenderer()->queueModelInstance("aquaplant1-r", "plant_instance3", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));
 
-	/*modelMatrix = vmml::create_translation(vmml::Vector3f(-280.0f, 8.0f, -460.0f)) * vmml::create_scaling(vmml::Vector3f(0.5f));
+	modelMatrix = vmml::create_translation(vmml::Vector3f(-280.0f, 8.0f, -460.0f)) * vmml::create_scaling(vmml::Vector3f(0.5f));
 	modelMatrix *= vmml::create_rotation(M_PI_2_F, vmml::Vector3f(0.0f, 1.f, 0.f));
 	bRenderer().getModelRenderer()->queueModelInstance("aquaplant2-r", "plant_instance4", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));
 
@@ -368,9 +368,9 @@ void RenderProject::updateRenderQueue(const std::string &camera, const double &d
 	modelMatrix = vmml::create_translation(vmml::Vector3f(-360.0f, -85.0f, -176.0f)) * vmml::create_scaling(vmml::Vector3f(0.5f));
 	modelMatrix *= vmml::create_rotation(M_PI_2_F, vmml::Vector3f(0.0f, 1.f, 0.f));
 	bRenderer().getModelRenderer()->queueModelInstance("aquaplant2-r", "plant_instance5", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));
-     */
-	// modelMatrix = vmml::create_translation(vmml::Vector3f(-353.0f, -85.0f, -210.0f)) * vmml::create_scaling(vmml::Vector3f(0.5f));
-    modelMatrix = vmml::create_translation(vmml::Vector3f(31.520990, -70.115227, -325.600250)) * vmml::create_scaling(vmml::Vector3f(0.5f));
+    
+	modelMatrix = vmml::create_translation(vmml::Vector3f(-353.0f, -85.0f, -210.0f)) * vmml::create_scaling(vmml::Vector3f(0.5f));
+    //modelMatrix = vmml::create_translation(vmml::Vector3f(31.520990, -70.115227, -325.600250)) * vmml::create_scaling(vmml::Vector3f(0.5f));
 	modelMatrix *= vmml::create_rotation(M_PI_2_F, vmml::Vector3f(0.0f, 1.f, 0.f));
 	bRenderer().getModelRenderer()->queueModelInstance("aquaplant1-r", "plant_instance6", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));
 
@@ -422,23 +422,23 @@ void RenderProject::updateRenderQueue(const std::string &camera, const double &d
 	modelMatrix *= vmml::create_rotation(M_PI_2_F, vmml::Vector3f(0.0f, 1.f, 0.f));
 	bRenderer().getModelRenderer()->queueModelInstance("aquaplant4", "plant_instance15", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));
 
-	/*modelMatrix = vmml::create_translation(vmml::Vector3f(410.0f, -35.5f, -52.0f)) * vmml::create_scaling(vmml::Vector3f(1.0f));
+	modelMatrix = vmml::create_translation(vmml::Vector3f(410.0f, -60.5f, -52.0f)) * vmml::create_scaling(vmml::Vector3f(1.0f));
 	modelMatrix *= vmml::create_rotation(M_PI_2_F, vmml::Vector3f(0.0f, 1.f, 0.f));
-	bRenderer().getModelRenderer()->queueModelInstance("aquaplant2-r", "plant_instance16", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));*/
+	bRenderer().getModelRenderer()->queueModelInstance("aquaplant2-r", "plant_instance16", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));
 
 	modelMatrix = vmml::create_translation(vmml::Vector3f(440.0f, 25.0f, 200.0f)) * vmml::create_scaling(vmml::Vector3f(1.0f));
 	modelMatrix *= vmml::create_rotation(M_PI_2_F, vmml::Vector3f(0.0f, 1.f, 0.f));
 	bRenderer().getModelRenderer()->queueModelInstance("aquaplant1-r", "plant_instance17", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));
 
-	/*modelMatrix = vmml::create_translation(vmml::Vector3f(417.0f, 50.5f, -363.0f)) * vmml::create_scaling(vmml::Vector3f(1.5f));
+	modelMatrix = vmml::create_translation(vmml::Vector3f(417.0f, 50.5f, -363.0f)) * vmml::create_scaling(vmml::Vector3f(1.5f));
 	modelMatrix *= vmml::create_rotation(M_PI_2_F, vmml::Vector3f(0.0f, 1.f, 0.f));
-	bRenderer().getModelRenderer()->queueModelInstance("aquaplant2-r", "plant_instance18", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));*/
+	bRenderer().getModelRenderer()->queueModelInstance("aquaplant2-r", "plant_instance18", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));
 
-	modelMatrix = vmml::create_translation(vmml::Vector3f(417.0f, 50.5f, -363.0f)) * vmml::create_scaling(vmml::Vector3f(1.0f));
+	modelMatrix = vmml::create_translation(vmml::Vector3f(-186.0f, 55.5f, 44.0f)) * vmml::create_scaling(vmml::Vector3f(0.7f));
 	modelMatrix *= vmml::create_rotation(M_PI_2_F, vmml::Vector3f(0.0f, 1.f, 0.f));
 	bRenderer().getModelRenderer()->queueModelInstance("aquaplant5", "plant_instance19", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));
 
-	modelMatrix = vmml::create_translation(vmml::Vector3f(417.0f, 50.5f, -363.0f)) * vmml::create_scaling(vmml::Vector3f(1.0f));
+	modelMatrix = vmml::create_translation(vmml::Vector3f(-459.0f, -15.5f, 4.0f)) * vmml::create_scaling(vmml::Vector3f(1.0f));
 	modelMatrix *= vmml::create_rotation(M_PI_2_F, vmml::Vector3f(0.0f, 1.f, 0.f));
 	bRenderer().getModelRenderer()->queueModelInstance("aquaplant5", "plant_instance20", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));
 
@@ -544,9 +544,9 @@ void RenderProject::updateCamera(const std::string &camera, const double &deltaT
 	//// Update camera ////
 	if (_running){
         if (cameraForward < 0 && _cameraCurrentSpeed > -_cameraSpeed) {
-            _cameraCurrentSpeed -= 0.3;
+            _cameraCurrentSpeed -= 0.5;
         } else if (cameraForward > 0 && _cameraCurrentSpeed < _cameraSpeed){
-            _cameraCurrentSpeed += 0.3;
+            _cameraCurrentSpeed += 0.5;
         } else {
             if (_cameraCurrentSpeed < -0.6) {
                 _cameraCurrentSpeed += 0.15;

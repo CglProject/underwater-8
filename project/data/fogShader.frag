@@ -34,7 +34,8 @@ void main()
 	
 	
 	const float LOG2 = 1.442695;
-	vec4 fogColor = vec4(0.5, 0.6, 0.7, 1.0);
+	//vec4 fogColor = vec4(0.255, 0.412, 0.882, 1.0); // royalblue
+    vec4 fogColor = vec4(0.118, 0.565, 1.0, 1.0);
 	//float FogFragCoord = length(colorDepthMap);
 	
 	float FogFragCoord = colorDepthMap.x;
@@ -44,7 +45,7 @@ void main()
 	
 	//FogFragCoord = (2 * n) / (f + n - FogFragCoord * (f-n));
 	
-	FogFragCoord = 1.0 - clamp(90.0 * (0.5 - FogFragCoord), 0.0, 1.0);
+	FogFragCoord = 1.0 - clamp(90.0 * (0.500 - FogFragCoord), 0.0, 1.0);
 	
 	float fogDensity = 1.8;
 	//float fogFactor = exp2( -fogDensity * fogDensity * FogFragCoord  * FogFragCoord  * LOG2 );
