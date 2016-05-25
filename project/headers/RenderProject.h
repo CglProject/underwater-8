@@ -77,6 +77,7 @@ private:
     int targetsLeft;
     bool won = false;
     bool lost = false;
+    bool paused = false;
     
     
 

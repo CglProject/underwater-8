@@ -32,22 +32,31 @@ void RenderProject::initFunction()
 	_cameraSpeed = 40.0f;
 	_running = false; _lastStateSpaceKey = bRenderer::INPUT_UNDEFINED;
 	_viewMatrixHUD = Camera::lookAt(vmml::Vector3f(0.0f, 0.0f, 0.25f), vmml::Vector3f::ZERO, vmml::Vector3f::UP);
-
     
+    // set shader versions (optional)
+    bRenderer().getObjects()->setShaderVersionDesktop("#version 120");
+    bRenderer().getObjects()->setShaderVersionES("#version 100");
     
-    
+    // Create text sprites
+    FontPtr font = bRenderer().getObjects()->loadFont("KozGoPro-ExtraLight.otf", 50);
+    bRenderer().getObjects()->createTextSprite("counterDisplay", vmml::Vector3f(1.f, 1.f, 1.f), "Can not start with empty string", font);
+    bRenderer().getObjects()->createTextSprite("timeDisplay", vmml::Vector3f(1.f, 1.f, 1.f), "Can not start with empty string", font);
+    bRenderer().getObjects()->createTextSprite("winnerLoserMessage", vmml::Vector3f(1.f, 1.f, 1.f), "Can not start with empty string", font);
+    bRenderer().getObjects()->createTextSprite("startInstructions", vmml::Vector3f(1.f, 1.f, 1.f), "Can not start with empty string", font);
     
     // Part of game logic: specify target positions
-    targetPositions.push_back(vmml::Vector3f(31.520990, -70.115227, -325.600250));
+    targetPositions.push_back(vmml::Vector3f(150.0f, -13.8f, 320.0f)); // Gearwheel
+    targetRadiuses.push_back(25.0);
+    targetPositions.push_back(vmml::Vector3f(450.0f, -7.0f, -400.0f)); // Seats
+    targetRadiuses.push_back(30.0);
+    targetPositions.push_back(vmml::Vector3f(-285.0f, -90.5f, -230.0f)); // Suitcase
+    targetRadiuses.push_back(20.0);
+    targetPositions.push_back(vmml::Vector3f(31.520990, -70.115227, -325.600250)); // Wing
+    targetRadiuses.push_back(150.0);
+    targetPositions.push_back(vmml::Vector3f(-309.125854f, -69.564186f, 346.023285f)); // Back
     targetRadiuses.push_back(100.0);
-    
-    
-    
-    
-	// set shader versions (optional)
-	bRenderer().getObjects()->setShaderVersionDesktop("#version 120");
-	bRenderer().getObjects()->setShaderVersionES("#version 100");
-
+    targetPositions.push_back(vmml::Vector3f(456.206360f, 8.703381f, 235.804108f)); // Engine
+    targetRadiuses.push_back(60.0);
 
 
 	// create camera
@@ -128,7 +137,6 @@ void RenderProject::resetGame() {
         targetFound.push_back(false);
     }
     targetsLeft = (int) targetPositions.size();
-    bRenderer::log(std::string("Game reset, targets left: ") + std::to_string(targetsLeft));
     
     // Move player back to starting point
     CameraPtr camera = bRenderer().getObjects()->getCamera("camera");
@@ -136,7 +144,7 @@ void RenderProject::resetGame() {
     camera->setRotation(vmml::Vector3f(0.f, -M_PI_F / 2, 0.f));
     
     // Reset available time
-    timeLeft = 10.0;
+    timeLeft = 90.0;
     
     won = false;
     lost = false;
@@ -145,15 +153,12 @@ void RenderProject::resetGame() {
 /* Draw your scene here */
 void RenderProject::loopFunction(const double &deltaTime, const double &elapsedTime)
 {
-//	bRenderer::log("FPS: " + std::to_string(1 / deltaTime));	// write number of frames per second to the console every
-    
     if (_running) {
         // Check if targets were found
         vmml::Vector3f playerPosition = -bRenderer().getObjects()->getCamera("camera")->getPosition();
         for (int i = 0; i < targetPositions.size(); ++i) {
             if (!targetFound.at(i)) {
                 float distance = (targetPositions.at(i) - playerPosition).length();
-                bRenderer::log(std::string("dist: ") + std::to_string(distance) + ", the radius: " + std::to_string(targetRadiuses.at(i)));
                 if (distance <= targetRadiuses.at(i)) {
                     targetFound.at(i) = true;
                     --targetsLeft;
@@ -161,17 +166,18 @@ void RenderProject::loopFunction(const double &deltaTime, const double &elapsedT
             }
         }
         
-        
-        timeLeft -= deltaTime;
+        // Decrease time left
+        timeLeft = fmax(timeLeft - deltaTime, 0.0f);
         
         if (targetsLeft == 0) { // Won?
             won = true;
-            //_running = false;
+            _running = false;
         } else if (timeLeft <= 0) { // Lost?
             lost = true;
-            //_running = false;
+            _running = false;
         }
     }
+    
     
 
     //// Draw Scene and do post processing ////
@@ -210,6 +216,63 @@ void RenderProject::loopFunction(const double &deltaTime, const double &elapsedT
     /*modelMatrix = vmml::create_translation(vmml::Vector3f(0.0f, 0.0f, -0.6));
     
     bRenderer().getModelRenderer()->drawModel(bRenderer().getObjects()->getModel("menubackscreen"), modelMatrix, _viewMatrixHUD, vmml::Matrix4f::IDENTITY, std::vector<std::string>({}), false);*/
+    
+    
+    
+    // Menu screen
+    
+    if (!_running) {
+        std::string startInstructions = std::string(Input::isTouchDevice() ? "Double tap to " : "Press space to ") + (paused ? "resume" : "start");
+        
+        if (won || lost) {
+            std::string winnerLoserMessage = won ? "Congratulations! You won!" : "Time up! You lost!";
+            startInstructions = Input::isTouchDevice() ? "Double tap to play again" : "Press space to play again";
+            
+            // Paint winner/loser message
+            TextSpritePtr winnerLoserSprite = bRenderer().getObjects()->getTextSprite("winnerLoserMessage");
+            winnerLoserSprite->setText(winnerLoserMessage);
+            float winnerLoserScale = 0.1f;
+            vmml::Matrix4f winnerLoserScaling = vmml::create_scaling(vmml::Vector3f(winnerLoserScale / bRenderer().getView()->getAspectRatio(), winnerLoserScale, winnerLoserScale));
+            vmml::Matrix4f modelMatrixWinnerLoser = vmml::create_translation(vmml::Vector3f(-0.53f / bRenderer().getView()->getAspectRatio(), 0.0f, -0.65f)) * winnerLoserScaling;
+            bRenderer().getModelRenderer()->drawModel(winnerLoserSprite, modelMatrixWinnerLoser, _viewMatrixHUD, vmml::Matrix4f::IDENTITY, std::vector<std::string>({}), false);
+        }
+        
+        // Paint start instructions
+        TextSpritePtr startInstructionsSprite = bRenderer().getObjects()->getTextSprite("startInstructions");
+        startInstructionsSprite->setText(startInstructions);
+        float startInstructionsScale = 0.08f;
+        vmml::Matrix4f startInstructionsScaling = vmml::create_scaling(vmml::Vector3f(startInstructionsScale / bRenderer().getView()->getAspectRatio(), startInstructionsScale, startInstructionsScale));
+        vmml::Matrix4f modelMatrixStartInstructions = vmml::create_translation(vmml::Vector3f(-0.53f / bRenderer().getView()->getAspectRatio(), -0.3f, -0.65f)) * startInstructionsScaling;
+        bRenderer().getModelRenderer()->drawModel(startInstructionsSprite, modelMatrixStartInstructions, _viewMatrixHUD, vmml::Matrix4f::IDENTITY, std::vector<std::string>({}), false);
+    }
+    
+    // Displaying time and counter of found/remaining targets
+    
+    if (_running) {
+        // Update and draw counter display
+        int targetCount = (int) targetPositions.size();
+        TextSpritePtr counterDisplaySprite = bRenderer().getObjects()->getTextSprite("counterDisplay");
+        counterDisplaySprite->setText(std::to_string(targetCount - targetsLeft) + " / " + std::to_string(targetCount));
+        float counterDisplayScale = 0.05f;
+        vmml::Matrix4f counterDisplayScaling = vmml::create_scaling(vmml::Vector3f(counterDisplayScale / bRenderer().getView()->getAspectRatio(), counterDisplayScale, counterDisplayScale));
+        vmml::Matrix4f modelMatrixCounterDisplay = vmml::create_translation(vmml::Vector3f(0.5f / bRenderer().getView()->getAspectRatio(), 0.9f, -0.65f)) * counterDisplayScaling;
+        bRenderer().getModelRenderer()->drawModel(counterDisplaySprite, modelMatrixCounterDisplay, _viewMatrixHUD, vmml::Matrix4f::IDENTITY, std::vector<std::string>({}), false);
+        
+        // Update and draw time display
+        int timeRemainder = floor(timeLeft);
+        int secondsLeft = timeRemainder % 60;
+        int minutesLeft = timeRemainder / 60;
+        TextSpritePtr timeDisplaySprite = bRenderer().getObjects()->getTextSprite("timeDisplay");
+        timeDisplaySprite->setText(std::to_string(minutesLeft) + ":" + (secondsLeft < 10 ? "0" : "") +  std::to_string(secondsLeft));
+        float timeDisplayScale = 0.05f;
+        vmml::Matrix4f timeDisplayScaling = vmml::create_scaling(vmml::Vector3f(timeDisplayScale / bRenderer().getView()->getAspectRatio(), timeDisplayScale, timeDisplayScale));
+        vmml::Matrix4f modelMatrixTimeDisplay = vmml::create_translation(vmml::Vector3f(0.5f / bRenderer().getView()->getAspectRatio(), 0.83f, -0.65f)) * timeDisplayScaling;
+        bRenderer().getModelRenderer()->drawModel(timeDisplaySprite, modelMatrixTimeDisplay, _viewMatrixHUD, vmml::Matrix4f::IDENTITY, std::vector<std::string>({}), false);
+    }
+    
+    
+    
+    
 
     /* End postprocessing */
     
@@ -466,6 +529,10 @@ void RenderProject::updateCamera(const std::string &camera, const double &deltaT
 		// pause using double tap
 		if (bRenderer().getInput()->doubleTapRecognized()){
 			_running = !_running;
+            paused = !_running;
+            if (won || lost) {
+                resetGame();
+            }
 		}
 
 		if (_running){
@@ -501,7 +568,11 @@ void RenderProject::updateCamera(const std::string &camera, const double &deltaT
 		{
 			_lastStateSpaceKey = currentStateSpaceKey;
 			if (currentStateSpaceKey == bRenderer::INPUT_PRESS){
-				_running = !_running;
+                _running = !_running;
+                paused = !_running;
+                if (won || lost) {
+                    resetGame();
+                }
 				bRenderer().getInput()->setCursorEnabled(!_running);
 			}
 		}
