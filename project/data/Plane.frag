@@ -38,8 +38,8 @@ void main() {
     }
     
     
-    gl_FragColor = clamp(diffuse, 0.0, 1.0);
-    gl_FragColor = vec4(vec3(0.5), 1.0);
+    // gl_FragColor = clamp(diffuse, 0.0, 1.0);
+    // gl_FragColor = vec4(vec3(0.5), 1.0);
     gl_FragColor = clamp(diffuse + 0.3 * caust, 0.0, 1.0);
     // gl_FragColor = mix(diffuse, caust, 0.5);
 }

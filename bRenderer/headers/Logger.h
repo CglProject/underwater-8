@@ -14,6 +14,8 @@ namespace bRenderer
 		LM_ERROR,
 		LM_SYS
 	};
+    
+    bool loggerActive();
 
 	/**	@brief Write a string to the console
 	 *	@param[in] msg The message to be displayed
@@ -33,7 +35,7 @@ namespace bRenderer
 	 *	@param[in] mode Defines the mode of the logger (adds a tag to the string)
 	 */
 	void log(const std::string &msg, const GLubyte *arg, LogMode mode = LM_INFO);
-
+    
 } // namespace bRenderer
 
 #endif /* defined(B_LOGGER_H) */

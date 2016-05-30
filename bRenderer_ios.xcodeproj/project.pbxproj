@@ -7,6 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6864DE101CFC535E0069E96B /* waterSurfaceShader.frag in Resources */ = {isa = PBXBuildFile; fileRef = 6864DE0E1CFC535E0069E96B /* waterSurfaceShader.frag */; };
+		6864DE111CFC535E0069E96B /* waterSurfaceShader.vert in Resources */ = {isa = PBXBuildFile; fileRef = 6864DE0F1CFC535E0069E96B /* waterSurfaceShader.vert */; };
+		6864DE1A1CFC651F0069E96B /* greatwhiteshark_Eye_n.tga in Resources */ = {isa = PBXBuildFile; fileRef = 6864DE121CFC651F0069E96B /* greatwhiteshark_Eye_n.tga */; };
+		6864DE1B1CFC651F0069E96B /* greatwhiteshark_Eye.tga in Resources */ = {isa = PBXBuildFile; fileRef = 6864DE131CFC651F0069E96B /* greatwhiteshark_Eye.tga */; };
+		6864DE1C1CFC651F0069E96B /* greatwhiteshark_n.tga in Resources */ = {isa = PBXBuildFile; fileRef = 6864DE141CFC651F0069E96B /* greatwhiteshark_n.tga */; };
+		6864DE1D1CFC651F0069E96B /* greatwhiteshark_teeth_n.tga in Resources */ = {isa = PBXBuildFile; fileRef = 6864DE151CFC651F0069E96B /* greatwhiteshark_teeth_n.tga */; };
+		6864DE1E1CFC651F0069E96B /* greatwhiteshark_teeth.tga in Resources */ = {isa = PBXBuildFile; fileRef = 6864DE161CFC651F0069E96B /* greatwhiteshark_teeth.tga */; };
+		6864DE1F1CFC651F0069E96B /* greatwhiteshark.tga in Resources */ = {isa = PBXBuildFile; fileRef = 6864DE171CFC651F0069E96B /* greatwhiteshark.tga */; };
+		6864DE201CFC651F0069E96B /* shark.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 6864DE181CFC651F0069E96B /* shark.mtl */; };
+		6864DE211CFC651F0069E96B /* shark.obj in Resources */ = {isa = PBXBuildFile; fileRef = 6864DE191CFC651F0069E96B /* shark.obj */; };
+		6864DE251CFC6B9F0069E96B /* godfish.obj in Resources */ = {isa = PBXBuildFile; fileRef = 6864DE221CFC6B9F0069E96B /* godfish.obj */; };
+		6864DE261CFC6B9F0069E96B /* goldfish.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 6864DE231CFC6B9F0069E96B /* goldfish.mtl */; };
+		6864DE271CFC6B9F0069E96B /* goldfish.tif in Resources */ = {isa = PBXBuildFile; fileRef = 6864DE241CFC6B9F0069E96B /* goldfish.tif */; };
+		6864DE2B1CFC77B00069E96B /* dori.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 6864DE281CFC77B00069E96B /* dori.mtl */; };
+		6864DE2C1CFC77B00069E96B /* dori.obj in Resources */ = {isa = PBXBuildFile; fileRef = 6864DE291CFC77B00069E96B /* dori.obj */; };
+		6864DE2D1CFC77B00069E96B /* dori.png in Resources */ = {isa = PBXBuildFile; fileRef = 6864DE2A1CFC77B00069E96B /* dori.png */; };
+		6864DE311CFC7DAA0069E96B /* dori3.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 6864DE2E1CFC7DAA0069E96B /* dori3.mtl */; };
+		6864DE321CFC7DAA0069E96B /* dori3.obj in Resources */ = {isa = PBXBuildFile; fileRef = 6864DE2F1CFC7DAA0069E96B /* dori3.obj */; };
+		6864DE331CFC7DAA0069E96B /* dori3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6864DE301CFC7DAA0069E96B /* dori3.png */; };
+		6864DE371CFC84E30069E96B /* redfish.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 6864DE341CFC84E30069E96B /* redfish.mtl */; };
+		6864DE381CFC84E30069E96B /* redfish.obj in Resources */ = {isa = PBXBuildFile; fileRef = 6864DE351CFC84E30069E96B /* redfish.obj */; };
+		6864DE391CFC84E30069E96B /* redfish.png in Resources */ = {isa = PBXBuildFile; fileRef = 6864DE361CFC84E30069E96B /* redfish.png */; };
+		6864DE3D1CFC89680069E96B /* humpback.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 6864DE3A1CFC89680069E96B /* humpback.mtl */; };
+		6864DE3E1CFC89680069E96B /* humpback.obj in Resources */ = {isa = PBXBuildFile; fileRef = 6864DE3B1CFC89680069E96B /* humpback.obj */; };
+		6864DE3F1CFC89680069E96B /* humpback.png in Resources */ = {isa = PBXBuildFile; fileRef = 6864DE3C1CFC89680069E96B /* humpback.png */; };
 		68F316D61CF2E2D300D8FB2F /* aquaplant1-r.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 68F316AD1CF2E2D300D8FB2F /* aquaplant1-r.mtl */; };
 		68F316D71CF2E2D300D8FB2F /* aquaplant1-r.obj in Resources */ = {isa = PBXBuildFile; fileRef = 68F316AE1CF2E2D300D8FB2F /* aquaplant1-r.obj */; };
 		68F316D81CF2E2D300D8FB2F /* aquaplant2-r.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 68F316AF1CF2E2D300D8FB2F /* aquaplant2-r.mtl */; };
@@ -194,6 +219,31 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6864DE0E1CFC535E0069E96B /* waterSurfaceShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = waterSurfaceShader.frag; sourceTree = "<group>"; };
+		6864DE0F1CFC535E0069E96B /* waterSurfaceShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = waterSurfaceShader.vert; sourceTree = "<group>"; };
+		6864DE121CFC651F0069E96B /* greatwhiteshark_Eye_n.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = greatwhiteshark_Eye_n.tga; sourceTree = "<group>"; };
+		6864DE131CFC651F0069E96B /* greatwhiteshark_Eye.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = greatwhiteshark_Eye.tga; sourceTree = "<group>"; };
+		6864DE141CFC651F0069E96B /* greatwhiteshark_n.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = greatwhiteshark_n.tga; sourceTree = "<group>"; };
+		6864DE151CFC651F0069E96B /* greatwhiteshark_teeth_n.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = greatwhiteshark_teeth_n.tga; sourceTree = "<group>"; };
+		6864DE161CFC651F0069E96B /* greatwhiteshark_teeth.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = greatwhiteshark_teeth.tga; sourceTree = "<group>"; };
+		6864DE171CFC651F0069E96B /* greatwhiteshark.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = greatwhiteshark.tga; sourceTree = "<group>"; };
+		6864DE181CFC651F0069E96B /* shark.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shark.mtl; sourceTree = "<group>"; };
+		6864DE191CFC651F0069E96B /* shark.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shark.obj; sourceTree = "<group>"; };
+		6864DE221CFC6B9F0069E96B /* godfish.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = godfish.obj; sourceTree = "<group>"; };
+		6864DE231CFC6B9F0069E96B /* goldfish.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = goldfish.mtl; sourceTree = "<group>"; };
+		6864DE241CFC6B9F0069E96B /* goldfish.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = goldfish.tif; sourceTree = "<group>"; };
+		6864DE281CFC77B00069E96B /* dori.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dori.mtl; sourceTree = "<group>"; };
+		6864DE291CFC77B00069E96B /* dori.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dori.obj; sourceTree = "<group>"; };
+		6864DE2A1CFC77B00069E96B /* dori.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dori.png; sourceTree = "<group>"; };
+		6864DE2E1CFC7DAA0069E96B /* dori3.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dori3.mtl; sourceTree = "<group>"; };
+		6864DE2F1CFC7DAA0069E96B /* dori3.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dori3.obj; sourceTree = "<group>"; };
+		6864DE301CFC7DAA0069E96B /* dori3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dori3.png; sourceTree = "<group>"; };
+		6864DE341CFC84E30069E96B /* redfish.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = redfish.mtl; sourceTree = "<group>"; };
+		6864DE351CFC84E30069E96B /* redfish.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = redfish.obj; sourceTree = "<group>"; };
+		6864DE361CFC84E30069E96B /* redfish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redfish.png; sourceTree = "<group>"; };
+		6864DE3A1CFC89680069E96B /* humpback.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = humpback.mtl; sourceTree = "<group>"; };
+		6864DE3B1CFC89680069E96B /* humpback.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = humpback.obj; sourceTree = "<group>"; };
+		6864DE3C1CFC89680069E96B /* humpback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humpback.png; sourceTree = "<group>"; };
 		68F316AD1CF2E2D300D8FB2F /* aquaplant1-r.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "aquaplant1-r.mtl"; sourceTree = "<group>"; };
 		68F316AE1CF2E2D300D8FB2F /* aquaplant1-r.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "aquaplant1-r.obj"; sourceTree = "<group>"; };
 		68F316AF1CF2E2D300D8FB2F /* aquaplant2-r.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "aquaplant2-r.mtl"; sourceTree = "<group>"; };
@@ -497,6 +547,31 @@
 		B47949841BA6742B00B5E9DC /* data */ = {
 			isa = PBXGroup;
 			children = (
+				6864DE3A1CFC89680069E96B /* humpback.mtl */,
+				6864DE3B1CFC89680069E96B /* humpback.obj */,
+				6864DE3C1CFC89680069E96B /* humpback.png */,
+				6864DE341CFC84E30069E96B /* redfish.mtl */,
+				6864DE351CFC84E30069E96B /* redfish.obj */,
+				6864DE361CFC84E30069E96B /* redfish.png */,
+				6864DE2E1CFC7DAA0069E96B /* dori3.mtl */,
+				6864DE2F1CFC7DAA0069E96B /* dori3.obj */,
+				6864DE301CFC7DAA0069E96B /* dori3.png */,
+				6864DE281CFC77B00069E96B /* dori.mtl */,
+				6864DE291CFC77B00069E96B /* dori.obj */,
+				6864DE2A1CFC77B00069E96B /* dori.png */,
+				6864DE221CFC6B9F0069E96B /* godfish.obj */,
+				6864DE231CFC6B9F0069E96B /* goldfish.mtl */,
+				6864DE241CFC6B9F0069E96B /* goldfish.tif */,
+				6864DE121CFC651F0069E96B /* greatwhiteshark_Eye_n.tga */,
+				6864DE131CFC651F0069E96B /* greatwhiteshark_Eye.tga */,
+				6864DE141CFC651F0069E96B /* greatwhiteshark_n.tga */,
+				6864DE151CFC651F0069E96B /* greatwhiteshark_teeth_n.tga */,
+				6864DE161CFC651F0069E96B /* greatwhiteshark_teeth.tga */,
+				6864DE171CFC651F0069E96B /* greatwhiteshark.tga */,
+				6864DE181CFC651F0069E96B /* shark.mtl */,
+				6864DE191CFC651F0069E96B /* shark.obj */,
+				6864DE0E1CFC535E0069E96B /* waterSurfaceShader.frag */,
+				6864DE0F1CFC535E0069E96B /* waterSurfaceShader.vert */,
 				68F3175F1CF4AED200D8FB2F /* arial.ttf */,
 				68F317601CF4AED200D8FB2F /* KozGoPro-ExtraLight.otf */,
 				68F317611CF4AED200D8FB2F /* MenuFont.otf */,
@@ -904,58 +979,77 @@
 			buildActionMask = 2147483647;
 			files = (
 				68F316EC1CF2E2D300D8FB2F /* metal.jpg in Resources */,
+				6864DE381CFC84E30069E96B /* redfish.obj in Resources */,
+				6864DE311CFC7DAA0069E96B /* dori3.mtl in Resources */,
 				68F316E21CF2E2D300D8FB2F /* fogShader.frag in Resources */,
 				68F316F01CF2E2D300D8FB2F /* Rock-Texture-Surface.jpg in Resources */,
 				68F316EF1CF2E2D300D8FB2F /* plant-light.png in Resources */,
 				68F316F21CF2E2D300D8FB2F /* Rock1.obj in Resources */,
+				6864DE101CFC535E0069E96B /* waterSurfaceShader.frag in Resources */,
 				68F3173C1CF2F60C00D8FB2F /* caust25.png in Resources */,
 				68F316F11CF2E2D300D8FB2F /* Rock1.mtl in Resources */,
 				68F317341CF2F60C00D8FB2F /* caust17.png in Resources */,
+				6864DE111CFC535E0069E96B /* waterSurfaceShader.vert in Resources */,
+				6864DE1A1CFC651F0069E96B /* greatwhiteshark_Eye_n.tga in Resources */,
 				68F317591CF49B4600D8FB2F /* stone1.mtl in Resources */,
 				68F3175B1CF49B4600D8FB2F /* stone2.mtl in Resources */,
 				68F316E61CF2E2D300D8FB2F /* ground.obj in Resources */,
+				6864DE321CFC7DAA0069E96B /* dori3.obj in Resources */,
 				68F317441CF2F60C00D8FB2F /* Plane.vert in Resources */,
 				68F317581CF49B4600D8FB2F /* rocksurface.png in Resources */,
 				68F317361CF2F60C00D8FB2F /* caust19.png in Resources */,
 				68F316FD1CF2E2D300D8FB2F /* zahnrad-neu.mtl in Resources */,
 				68F317271CF2F60C00D8FB2F /* caust04.png in Resources */,
+				6864DE211CFC651F0069E96B /* shark.obj in Resources */,
 				68F316E41CF2E2D300D8FB2F /* ground.jpg in Resources */,
+				6864DE201CFC651F0069E96B /* shark.mtl in Resources */,
 				68F317401CF2F60C00D8FB2F /* caust29.png in Resources */,
 				68F3175A1CF49B4600D8FB2F /* stone1.obj in Resources */,
 				68F316D61CF2E2D300D8FB2F /* aquaplant1-r.mtl in Resources */,
+				6864DE3E1CFC89680069E96B /* humpback.obj in Resources */,
 				68F3173F1CF2F60C00D8FB2F /* caust28.png in Resources */,
 				68F316FE1CF2E2D300D8FB2F /* zahnrad-neu.obj in Resources */,
 				68F316D91CF2E2D300D8FB2F /* aquaplant2-r.obj in Resources */,
 				68F317461CF33C3900D8FB2F /* menubackscreen.jpg in Resources */,
+				6864DE2D1CFC77B00069E96B /* dori.png in Resources */,
 				68F316FC1CF2E2D300D8FB2F /* wood.png in Resources */,
 				68F3173E1CF2F60C00D8FB2F /* caust27.png in Resources */,
 				68F3172F1CF2F60C00D8FB2F /* caust12.png in Resources */,
 				68F317391CF2F60C00D8FB2F /* caust22.png in Resources */,
 				68F317371CF2F60C00D8FB2F /* caust20.png in Resources */,
+				6864DE331CFC7DAA0069E96B /* dori3.png in Resources */,
 				68F316F81CF2E2D300D8FB2F /* suitcase.obj in Resources */,
 				68F3175C1CF49B4600D8FB2F /* stone2.obj in Resources */,
 				68F316E51CF2E2D300D8FB2F /* ground.mtl in Resources */,
 				68F317291CF2F60C00D8FB2F /* caust06.png in Resources */,
 				68F317421CF2F60C00D8FB2F /* caust31.png in Resources */,
 				68F316ED1CF2E2D300D8FB2F /* metal.png in Resources */,
+				6864DE251CFC6B9F0069E96B /* godfish.obj in Resources */,
 				68F3172B1CF2F60C00D8FB2F /* caust08.png in Resources */,
 				B4794A311BA6743D00B5E9DC /* LICENSE.txt in Resources */,
 				68F317001CF2E41F00D8FB2F /* config.json in Resources */,
 				68F316FB1CF2E2D300D8FB2F /* wing.png in Resources */,
 				68F316D71CF2E2D300D8FB2F /* aquaplant1-r.obj in Resources */,
+				6864DE2C1CFC77B00069E96B /* dori.obj in Resources */,
 				B4794A2A1BA6743D00B5E9DC /* LICENSE.txt in Resources */,
+				6864DE261CFC6B9F0069E96B /* goldfish.mtl in Resources */,
+				6864DE1D1CFC651F0069E96B /* greatwhiteshark_teeth_n.tga in Resources */,
 				68F317351CF2F60C00D8FB2F /* caust18.png in Resources */,
 				68F316F91CF2E2D300D8FB2F /* wing.mtl in Resources */,
 				68F317301CF2F60C00D8FB2F /* caust13.png in Resources */,
 				B4794A301BA6743D00B5E9DC /* LICENSE.txt in Resources */,
 				68F316DA1CF2E2D300D8FB2F /* aquaplant4.mtl in Resources */,
+				6864DE371CFC84E30069E96B /* redfish.mtl in Resources */,
 				68F317381CF2F60C00D8FB2F /* caust21.png in Resources */,
+				6864DE2B1CFC77B00069E96B /* dori.mtl in Resources */,
 				68F3173D1CF2F60C00D8FB2F /* caust26.png in Resources */,
 				68F316FA1CF2E2D300D8FB2F /* wing.obj in Resources */,
 				68F316E91CF2E2D300D8FB2F /* leather.png in Resources */,
 				B4CB8CD01B72E43300FE041B /* Project-Info.plist in Resources */,
+				6864DE1C1CFC651F0069E96B /* greatwhiteshark_n.tga in Resources */,
 				68F317641CF4AED200D8FB2F /* MenuFont.otf in Resources */,
 				68F316EA1CF2E2D300D8FB2F /* metal-dark.png in Resources */,
+				6864DE3D1CFC89680069E96B /* humpback.mtl in Resources */,
 				68F316DB1CF2E2D300D8FB2F /* aquaplant4.obj in Resources */,
 				68F3172D1CF2F60C00D8FB2F /* caust10.png in Resources */,
 				68F316E11CF2E2D300D8FB2F /* engine.obj in Resources */,
@@ -963,6 +1057,8 @@
 				68F316D81CF2E2D300D8FB2F /* aquaplant2-r.mtl in Resources */,
 				68F316EE1CF2E2D300D8FB2F /* oldStuff in Resources */,
 				68F317261CF2F60C00D8FB2F /* caust03.png in Resources */,
+				6864DE391CFC84E30069E96B /* redfish.png in Resources */,
+				6864DE271CFC6B9F0069E96B /* goldfish.tif in Resources */,
 				68F316F71CF2E2D300D8FB2F /* suitcase.mtl in Resources */,
 				68F316DC1CF2E2D300D8FB2F /* aquaplant5.mtl in Resources */,
 				68F3172E1CF2F60C00D8FB2F /* caust11.png in Resources */,
@@ -980,12 +1076,16 @@
 				68F3172C1CF2F60C00D8FB2F /* caust09.png in Resources */,
 				68F316E31CF2E2D300D8FB2F /* fogShader.vert in Resources */,
 				68F317411CF2F60C00D8FB2F /* caust30.png in Resources */,
+				6864DE3F1CFC89680069E96B /* humpback.png in Resources */,
+				6864DE1B1CFC651F0069E96B /* greatwhiteshark_Eye.tga in Resources */,
 				68F3173A1CF2F60C00D8FB2F /* caust23.png in Resources */,
+				6864DE1E1CFC651F0069E96B /* greatwhiteshark_teeth.tga in Resources */,
 				68F317621CF4AED200D8FB2F /* arial.ttf in Resources */,
 				68F317331CF2F60C00D8FB2F /* caust16.png in Resources */,
 				68F317431CF2F60C00D8FB2F /* Plane.frag in Resources */,
 				68F3172A1CF2F60C00D8FB2F /* caust07.png in Resources */,
 				68F317571CF49B4600D8FB2F /* rocksurface.jpg in Resources */,
+				6864DE1F1CFC651F0069E96B /* greatwhiteshark.tga in Resources */,
 				68F316EB1CF2E2D300D8FB2F /* metal-light.png in Resources */,
 				68F316F61CF2E2D300D8FB2F /* seats.obj in Resources */,
 				68F316E81CF2E2D300D8FB2F /* heck.obj in Resources */,
@@ -1127,7 +1227,7 @@
 					"$SRCROOT/externalLibraries/freetype-2.6/include",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/project/ios/Resources/Project-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
@@ -1166,7 +1266,7 @@
 					"$SRCROOT/externalLibraries/freetype-2.6/include",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/project/ios/Resources/Project-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";

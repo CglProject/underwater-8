@@ -95,7 +95,16 @@ void RenderProject::initFunction()
 	bRenderer().getObjects()->loadObjModel("wing.obj", true, false, false, 2, true, false);
 	bRenderer().getObjects()->loadObjModel("heck.obj", true, false, false, 2, true, false);
 	bRenderer().getObjects()->loadObjModel("engine.obj", true, false, false, 2, true, false);
-
+    
+    
+    bRenderer().getObjects()->loadObjModel("dori.obj", false, true, false, 2, true, true);
+    bRenderer().getObjects()->loadObjModel("dori3.obj", false, true, false, 2, true, true);
+    bRenderer().getObjects()->loadObjModel("redfish.obj", false, true, false, 2, true, true);
+    bRenderer().getObjects()->loadObjModel("humpback.obj", false, true, false, 2, true, true);
+    
+    
+    // bRenderer().getObjects()->loadObjModel("goldfish.obj", false, true, false, 4, true, true);
+    // bRenderer().getObjects()->loadObjModel("goldfish.obj", true, false, false, 2, true, false);
 
 
 	// sprites
@@ -127,7 +136,7 @@ void RenderProject::initFunction()
 
 
 	// Update render queue
-	updateRenderQueue("camera", 0.0f);
+	updateRenderQueue("camera", 0.0f, 0.0);
 }
 
 void RenderProject::resetGame() {
@@ -140,11 +149,12 @@ void RenderProject::resetGame() {
     
     // Move player back to starting point
     CameraPtr camera = bRenderer().getObjects()->getCamera("camera");
-    camera->setPosition(vmml::Vector3f(-33.0, 0.f, -13.0));
+    // camera->setPosition(vmml::Vector3f(-33.0, 0.f, -13.0));
+    camera->setPosition(vmml::Vector3f(247.366211, -81.021538, -66.541756));
     camera->setRotation(vmml::Vector3f(0.f, -M_PI_F / 2, 0.f));
     
     // Reset available time
-    timeLeft = 90.0;
+    timeLeft = 30.0;
     
     won = false;
     lost = false;
@@ -160,8 +170,10 @@ void RenderProject::loopFunction(const double &deltaTime, const double &elapsedT
             if (!targetFound.at(i)) {
                 float distance = (targetPositions.at(i) - playerPosition).length();
                 if (distance <= targetRadiuses.at(i)) {
+                    // Found a new target
                     targetFound.at(i) = true;
                     --targetsLeft;
+                    timeLeft += 20.0; // Player gets extra time when they find a new target
                 }
             }
         }
@@ -253,7 +265,7 @@ void RenderProject::loopFunction(const double &deltaTime, const double &elapsedT
         int targetCount = (int) targetPositions.size();
         TextSpritePtr counterDisplaySprite = bRenderer().getObjects()->getTextSprite("counterDisplay");
         counterDisplaySprite->setText(std::to_string(targetCount - targetsLeft) + " / " + std::to_string(targetCount));
-        float counterDisplayScale = 0.05f;
+        float counterDisplayScale = 0.08f;
         vmml::Matrix4f counterDisplayScaling = vmml::create_scaling(vmml::Vector3f(counterDisplayScale / bRenderer().getView()->getAspectRatio(), counterDisplayScale, counterDisplayScale));
         vmml::Matrix4f modelMatrixCounterDisplay = vmml::create_translation(vmml::Vector3f(0.5f / bRenderer().getView()->getAspectRatio(), 0.9f, -0.65f)) * counterDisplayScaling;
         bRenderer().getModelRenderer()->drawModel(counterDisplaySprite, modelMatrixCounterDisplay, _viewMatrixHUD, vmml::Matrix4f::IDENTITY, std::vector<std::string>({}), false);
@@ -264,9 +276,9 @@ void RenderProject::loopFunction(const double &deltaTime, const double &elapsedT
         int minutesLeft = timeRemainder / 60;
         TextSpritePtr timeDisplaySprite = bRenderer().getObjects()->getTextSprite("timeDisplay");
         timeDisplaySprite->setText(std::to_string(minutesLeft) + ":" + (secondsLeft < 10 ? "0" : "") +  std::to_string(secondsLeft));
-        float timeDisplayScale = 0.05f;
+        float timeDisplayScale = 0.08f;
         vmml::Matrix4f timeDisplayScaling = vmml::create_scaling(vmml::Vector3f(timeDisplayScale / bRenderer().getView()->getAspectRatio(), timeDisplayScale, timeDisplayScale));
-        vmml::Matrix4f modelMatrixTimeDisplay = vmml::create_translation(vmml::Vector3f(0.5f / bRenderer().getView()->getAspectRatio(), 0.83f, -0.65f)) * timeDisplayScaling;
+        vmml::Matrix4f modelMatrixTimeDisplay = vmml::create_translation(vmml::Vector3f(0.5f / bRenderer().getView()->getAspectRatio(), 0.8f, -0.65f)) * timeDisplayScaling;
         bRenderer().getModelRenderer()->drawModel(timeDisplaySprite, modelMatrixTimeDisplay, _viewMatrixHUD, vmml::Matrix4f::IDENTITY, std::vector<std::string>({}), false);
     }
     
@@ -299,7 +311,7 @@ void RenderProject::loopFunction(const double &deltaTime, const double &elapsedT
     bRenderer().getObjects()->getLight("cameraLight")->setPosition(cameraPosition);
 
     /// Update render queue ///
-    updateRenderQueue("camera", deltaTime);
+    updateRenderQueue("camera", deltaTime, elapsedTime);
     
 
 	// Quit renderer when escape is pressed
@@ -314,8 +326,21 @@ void RenderProject::terminateFunction()
 }
 
 /* Update render queue */
-void RenderProject::updateRenderQueue(const std::string &camera, const double &deltaTime)
+void RenderProject::updateRenderQueue(const std::string &camera, const double &deltaTime, const double &elapsedTime)
 {
+    
+    
+    /*vmml::Vector3f sharkCenter(10.0f, 0.0f, 0.0f);
+    float sharkStartAngle = 0.5f * M_PI_F;
+    float sharkPeriod = 30.0f;
+    double elapsedTime = 0.0f;
+    
+    vmml::Matrix4f modelMatrixShark = vmml::create_rotation(sharkStartAngle + (float) elapsedTime * (1.0f / sharkPeriod) * 2.0f * M_PI_F, vmml::Vector3f(0.0f, 1.0f, 0.0f)) * vmml::create_translation(sharkCenter);
+     bRenderer().getModelRenderer()->queueModelInstance("goldfish", "shark_instance", camera, modelMatrixShark, std::vector<std::string>({ "light", "cameraLight" }), true, true);*/
+     
+    
+    
+    
     // Get the texture for the caustics (loaded in the init function)
     TexturePtr causticsTexture = bRenderer().getObjects()->getTexture(std::string("caust") + (causticsIndex < 10 ? "0" : "") + std::to_string(causticsIndex));
     
@@ -333,10 +358,74 @@ void RenderProject::updateRenderQueue(const std::string &camera, const double &d
 	//bRenderer().getModelRenderer()->drawModel("plane", camera, modelMatrix6, std::vector<std::string>({ "testLight"}), true, false);
 	//bRenderer().getModelRenderer()->drawModel("groundModel", camera, modelMatrix6, std::vector<std::string>({ "testLight"}), true, false);
 	bRenderer().getModelRenderer()->queueModelInstance("ground", "ground_instance", camera, modelMatrix1, std::vector<std::string>({ "light", "cameraLight"}));
-
-	vmml::Matrix4f modelMatrix = vmml::create_translation(vmml::Vector3f(320.0f, -130.0f, 0.0f)) * vmml::create_scaling(vmml::Vector3f(50.0f));
+    
+    float dori1Period = 160.0;
+    float dori1Direction = -1.0;
+    float dori1InitialAngle = 0.01f;
+	vmml::Matrix4f modelMatrix = vmml::create_translation(vmml::Vector3f(320.0f, 60.0f, 0.0f)) * vmml::create_scaling(vmml::Vector3f(50.0f));
 	modelMatrix *= vmml::create_rotation(M_PI_2_F, vmml::Vector3f(0.0f, 1.f, 0.f));
-	bRenderer().getModelRenderer()->queueModelInstance("Rock1", "rock_instance1", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));
+    modelMatrix =  vmml::create_rotation(dori1InitialAngle * 2.0f * M_PI_F + dori1Direction * ((float) elapsedTime / dori1Period) * 2.0f * M_PI_F, vmml::Vector3f(0.0f, 1.f, 0.f)) * modelMatrix;
+	bRenderer().getModelRenderer()->queueModelInstance("dori", "dori_instance1", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));
+    
+    float dori2Period = 140.0;
+    float dori2Direction = 1.0;
+    float dori2InitialAngle = 0.08f;
+    modelMatrix = vmml::create_translation(vmml::Vector3f(320.0f, 70.0f, 0.0f)) * vmml::create_scaling(vmml::Vector3f(50.0f));
+    modelMatrix *= vmml::create_rotation(M_PI_2_F * 3.0f, vmml::Vector3f(0.0f, 1.f, 0.f));
+    modelMatrix =  vmml::create_rotation(dori2InitialAngle * 2.0f * M_PI_F + dori2Direction * ((float) elapsedTime / dori2Period) * 2.0f * M_PI_F, vmml::Vector3f(0.0f, 1.f, 0.f)) * modelMatrix;
+    bRenderer().getModelRenderer()->queueModelInstance("dori", "dori_instance2", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));
+    
+    float dori3Period = 120.0;
+    float dori3Direction = -1.0;
+    float dori3InitialAngle = 0.0f;
+    modelMatrix = vmml::create_translation(vmml::Vector3f(320.0f, 80.0f, 0.0f)) * vmml::create_scaling(vmml::Vector3f(50.0f));
+    modelMatrix *= vmml::create_rotation(M_PI_2_F, vmml::Vector3f(0.0f, 1.f, 0.f));
+    modelMatrix =  vmml::create_rotation(dori3InitialAngle * 2.0f * M_PI_F + dori3Direction * ((float) elapsedTime / dori3Period) * 2.0f * M_PI_F, vmml::Vector3f(0.0f, 1.f, 0.f)) * modelMatrix;
+    bRenderer().getModelRenderer()->queueModelInstance("dori3", "dori_instance3", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));
+    
+    float redfish1Period = 210.0;
+    float redfish1Direction = 1.0;
+    float redfish1InitialAngle = 0.3f;
+    modelMatrix = vmml::create_translation(vmml::Vector3f(250.0f, 60.0f, 0.0f)) * vmml::create_scaling(vmml::Vector3f(50.0f));
+    modelMatrix *= vmml::create_rotation(M_PI_2_F * 3.0f, vmml::Vector3f(0.0f, 1.f, 0.f));
+    modelMatrix =  vmml::create_rotation(redfish1InitialAngle * 2.0f * M_PI_F + redfish1Direction * ((float) elapsedTime / redfish1Period) * 2.0f * M_PI_F, vmml::Vector3f(0.0f, 1.f, 0.f)) * modelMatrix;
+    bRenderer().getModelRenderer()->queueModelInstance("redfish", "redfish_instance1", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));
+    
+    float redfish2Period = 210.0;
+    float redfish2Direction = 1.0;
+    float redfish2InitialAngle = 0.27f;
+    modelMatrix = vmml::create_translation(vmml::Vector3f(230.0f, 74.0f, 0.0f)) * vmml::create_scaling(vmml::Vector3f(70.0f));
+    modelMatrix *= vmml::create_rotation(M_PI_2_F * 3.0f, vmml::Vector3f(0.0f, 1.f, 0.f));
+    modelMatrix =  vmml::create_rotation(redfish2InitialAngle * 2.0f * M_PI_F + redfish2Direction * ((float) elapsedTime / redfish2Period) * 2.0f * M_PI_F, vmml::Vector3f(0.0f, 1.f, 0.f)) * modelMatrix;
+    bRenderer().getModelRenderer()->queueModelInstance("redfish", "redfish_instance2", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));
+    
+    float redfish3Period = 210.0;
+    float redfish3Direction = 1.0;
+    float redfish3InitialAngle = 0.27f;
+    modelMatrix = vmml::create_translation(vmml::Vector3f(210.0f, 85.0f, 0.0f)) * vmml::create_scaling(vmml::Vector3f(30.0f));
+    modelMatrix *= vmml::create_rotation(M_PI_2_F * 3.0f, vmml::Vector3f(0.0f, 1.f, 0.f));
+    modelMatrix =  vmml::create_rotation(redfish3InitialAngle * 2.0f * M_PI_F + redfish3Direction * ((float) elapsedTime / redfish3Period) * 2.0f * M_PI_F, vmml::Vector3f(0.0f, 1.f, 0.f)) * modelMatrix;
+    bRenderer().getModelRenderer()->queueModelInstance("redfish", "redfish_instance3", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));
+    
+    float dori4Period = 90.0;
+    float dori4Direction = -1.0;
+    float dori4InitialAngle = 0.85f;
+    modelMatrix = vmml::create_translation(vmml::Vector3f(250.0f, 85.0f, 0.0f)) * vmml::create_scaling(vmml::Vector3f(50.0f));
+    modelMatrix *= vmml::create_rotation(M_PI_2_F, vmml::Vector3f(0.0f, 1.f, 0.f));
+    modelMatrix =  vmml::create_rotation(dori4InitialAngle * 2.0f * M_PI_F + dori4Direction * ((float) elapsedTime / dori4Period) * 2.0f * M_PI_F, vmml::Vector3f(0.0f, 1.f, 0.f)) * modelMatrix;
+    bRenderer().getModelRenderer()->queueModelInstance("humpback", "dori_instance4", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));
+    
+    float dori5Period = 90.0;
+    float dori5Direction = -1.0;
+    float dori5InitialAngle = 0.8f;
+    modelMatrix = vmml::create_translation(vmml::Vector3f(240.0f, 75.0f, 0.0f)) * vmml::create_scaling(vmml::Vector3f(60.0f));
+    modelMatrix *= vmml::create_rotation(M_PI_2_F, vmml::Vector3f(0.0f, 1.f, 0.f));
+    modelMatrix =  vmml::create_rotation(dori5InitialAngle * 2.0f * M_PI_F + dori5Direction * ((float) elapsedTime / dori5Period) * 2.0f * M_PI_F, vmml::Vector3f(0.0f, 1.f, 0.f)) * modelMatrix;
+    bRenderer().getModelRenderer()->queueModelInstance("humpback", "dori_instance5", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));
+    
+    modelMatrix = vmml::create_translation(vmml::Vector3f(320.0f, -130.0f, 0.0f)) * vmml::create_scaling(vmml::Vector3f(50.0f));
+    modelMatrix *= vmml::create_rotation(M_PI_2_F, vmml::Vector3f(0.0f, 1.f, 0.f));
+    bRenderer().getModelRenderer()->queueModelInstance("Rock1", "rock_instance1", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));
 
 	modelMatrix = vmml::create_translation(vmml::Vector3f(-320.0f, -110.0f, 300.0f)) * vmml::create_scaling(vmml::Vector3f(3.0f));
 	modelMatrix *= vmml::create_rotation(M_PI_2_F-0.4f, vmml::Vector3f(0.0f, 6.f, 0.f));
@@ -345,6 +434,8 @@ void RenderProject::updateRenderQueue(const std::string &camera, const double &d
 	modelMatrix = vmml::create_translation(vmml::Vector3f(-320.0f, -15.0f, -450.0f)) * vmml::create_scaling(vmml::Vector3f(5.0f));
 	modelMatrix *= vmml::create_rotation(M_PI_2_F, vmml::Vector3f(0.0f, 1.f, 0.f));
 	bRenderer().getModelRenderer()->queueModelInstance("Rock1", "rock_instance3", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));
+    
+    
 
 
 
@@ -373,24 +464,11 @@ void RenderProject::updateRenderQueue(const std::string &camera, const double &d
 	modelMatrix *= vmml::create_rotation(0.3f, vmml::Vector3f(0.0f, 0.f, 1.f));
 	bRenderer().getModelRenderer()->queueModelInstance("suitcase", "suitcase_instance", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));
 
-	
-    
-    
-    
-    
     modelMatrix = vmml::create_translation(vmml::Vector3f(120.0f, -30.5f, -430.0f)) * vmml::create_scaling(vmml::Vector3f(0.7f));
-	modelMatrix *= vmml::create_rotation(M_PI_2_F+0.3f, vmml::Vector3f(1.0f, 0.f, 0.f));
-	modelMatrix *= vmml::create_rotation(M_PI_F, vmml::Vector3f(0.0f, 1.f, 0.f));
-	modelMatrix *= vmml::create_rotation(1.3f, vmml::Vector3f(0.0f, 0.f, 1.f));
+    modelMatrix *= vmml::create_rotation(M_PI_2_F+0.3f, vmml::Vector3f(1.0f, 0.f, 0.f));
+    modelMatrix *= vmml::create_rotation(M_PI_F, vmml::Vector3f(0.0f, 1.f, 0.f));
+    modelMatrix *= vmml::create_rotation(1.3f, vmml::Vector3f(0.0f, 0.f, 1.f));
 	bRenderer().getModelRenderer()->queueModelInstance("wing", "wing_instance", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));
-    
-    
-
-	
-    
-    
-    
-    
     
     modelMatrix = vmml::create_translation(vmml::Vector3f(-320.0f, -50.0f, 350.0f)) * vmml::create_scaling(vmml::Vector3f(0.7f));
 	//modelMatrix *= vmml::create_rotation(M_PI_2_F, vmml::Vector3f(1.0f, 0.f, 0.f));
@@ -504,7 +582,6 @@ void RenderProject::updateRenderQueue(const std::string &camera, const double &d
 	modelMatrix = vmml::create_translation(vmml::Vector3f(-459.0f, -15.5f, 4.0f)) * vmml::create_scaling(vmml::Vector3f(1.0f));
 	modelMatrix *= vmml::create_rotation(M_PI_2_F, vmml::Vector3f(0.0f, 1.f, 0.f));
 	bRenderer().getModelRenderer()->queueModelInstance("aquaplant5", "plant_instance20", camera, modelMatrix, std::vector<std::string>({ "light", "cameraLight" }));
-
 
 	// -186.531738 / 72.730522 / 44.357285
 	// -459.170380 / -1.045390 / 4.113952

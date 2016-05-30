@@ -48,7 +48,7 @@ private:
     void resetGame();
     
 	/* Update render queue */
-	void updateRenderQueue(const std::string &camera, const double &deltaTime);
+	void updateRenderQueue(const std::string &camera, const double &deltaTime, const double &elapsedTime);
 
 	/* Camera movement */
 	void updateCamera(const std::string &camera, const double &deltaTime);

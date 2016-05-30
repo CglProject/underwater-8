@@ -55,43 +55,4 @@ void main()
 	
 	
     gl_FragColor = mix(colorScene, fogColor, FogFragCoord);
-    
-    
-    // Experiments (TODO: remove):
-    
-	//gl_FragColor = vec4(FogFragCoord, FogFragCoord, FogFragCoord, 1.0f);
-	//gl_FragColor = texture2D(depthmap_texture, texCoordVarying.st);
-	//gl_FragColor = colorScene;
-    /*
-    float C = 1.0;
-    float depth_value = colorDepthMap.x;
-    float far = 1.0;
-    float zz = (exp(depth_value*log(C*far+1.0)) - 1.0)/C;
-    // float intervalValue = (exp(depth_value*log(C*far+1.0)) - 1.0)/C;
-    //float intervalValue = 1.0 / (10.0 * depth_value);
-    // float intervalValue = 100000.0 * log(depth_value);
-    // float intervalValue = zz / 0.6;
-    float intervalValue = log(2.0 + depth_value) * 0.3;
-    if (intervalValue < 0.1) {
-        gl_FragColor = vec4(0.1, 0.0, 0.0, 1.0);
-    } else if (intervalValue < 0.2) {
-        gl_FragColor = vec4(0.2, 0.0, 0.0, 1.0);
-    } else if (intervalValue < 0.3) {
-        gl_FragColor = vec4(0.3, 0.0, 0.0, 1.0);
-    } else if (intervalValue < 0.4) {
-        gl_FragColor = vec4(0.4, 0.0, 0.0, 1.0);
-    } else if (intervalValue < 0.5) {
-        gl_FragColor = vec4(0.5, 0.0, 0.0, 1.0);
-    } else if (intervalValue < 0.6) {
-        gl_FragColor = vec4(0.6, 0.0, 0.0, 1.0);
-    } else if (intervalValue < 0.7) {
-        gl_FragColor = vec4(0.7, 0.0, 0.0, 1.0);
-    } else if (intervalValue < 0.8) {
-        gl_FragColor = vec4(0.8, 0.0, 0.0, 1.0);
-    } else if (intervalValue < 0.9) {
-        gl_FragColor = vec4(0.9, 0.0, 0.0, 1.0);
-    }  else {
-        gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
-    }*/
-    
 }

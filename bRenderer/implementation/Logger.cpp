@@ -19,20 +19,30 @@ namespace bRenderer
 			return bRenderer::LOG_MODE_INFO();
 		}
 	}
+    
+    bool loggerActive() {
+        return true;
+    }
 
 	void log(const std::string &msg, LogMode mode)
 	{
-		std::cout << getTag(mode) << ": " << msg << std::endl;
+        if (loggerActive()) {
+            std::cout << getTag(mode) << ": " << msg << std::endl;
+        }
 	}
 
 	void log(const GLubyte *arg, LogMode mode)
-	{
-		log("", arg, mode);
+    {
+        if (loggerActive()) {
+            log("", arg, mode);
+        }
 	}
 
 	void log(const std::string &msg, const GLubyte *arg, LogMode mode)
-	{	
-		std::cout << getTag(mode) << ": " << msg << arg << std::endl;
+    {
+        if (loggerActive()) {
+            std::cout << getTag(mode) << ": " << msg << arg << std::endl;
+        }
 	}
 
 } // namespace bRenderer
