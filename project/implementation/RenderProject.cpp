@@ -153,6 +153,9 @@ void RenderProject::resetGame() {
     camera->setPosition(vmml::Vector3f(247.366211, -81.021538, -66.541756));
     camera->setRotation(vmml::Vector3f(0.f, -M_PI_F / 2, 0.f));
     
+    // reset speed
+    _cameraCurrentSpeed = 0.0f;
+    
     // Reset available time
     timeLeft = 30.0;
     

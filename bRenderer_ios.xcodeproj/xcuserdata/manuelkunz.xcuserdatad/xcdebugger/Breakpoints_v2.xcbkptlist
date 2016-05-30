@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "project/implementation/RenderProject.cpp"
-            timestampString = "486313812.979489"
+            timestampString = "486314333.590704"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
             landmarkName = "RenderProject::loopFunction(const double &amp;deltaTime, const double &amp;elapsedTime)"
             landmarkType = "5">
          </BreakpointContent>
