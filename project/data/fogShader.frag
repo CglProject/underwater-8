@@ -18,13 +18,15 @@ void main()
 	
 	vec2 waveCoords = texCoordVarying.st;
 	
-    float heigtStrech = 5.0;
-    float widthStrech = 0.01;
+    float heigtStrechX = 5.0;
+    float widthStrechX = 0.01;
+    float heigtStrechY = 3.0;
+    float widthStrechY = 0.005;
     float speed = 1.0;
 	float PI = 3.14159265359;
 	
-    waveCoords.x = waveCoords.x + ( sin(texCoordVarying.y * heigtStrech + passedTime * speed) * widthStrech );
-	waveCoords.y = waveCoords.y + ( sin(texCoordVarying.x * heigtStrech + passedTime * speed) * widthStrech );
+    waveCoords.x = waveCoords.x + ( sin(texCoordVarying.y * heigtStrechX + passedTime * speed) * widthStrechX );
+	waveCoords.y = waveCoords.y + ( sin(texCoordVarying.x * heigtStrechY + passedTime * speed) * widthStrechY );
 	
 	
 	/* FOG part */

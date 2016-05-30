@@ -21,7 +21,7 @@ namespace bRenderer
 	}
     
     bool loggerActive() {
-        return true;
+        return false;
     }
 
 	void log(const std::string &msg, LogMode mode)
