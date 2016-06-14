@@ -74,8 +74,6 @@ void RenderProject::initFunction()
         bRenderer().getObjects()->loadTexture(std::string("caust") + (i < 10 ? "0" : "") + std::to_string(i) + ".png");
     }
     
-    bRenderer().getObjects()->createSprite("menubackscreen", "menubackscreen.png");
-    
     // Load shaders
     bRenderer().getObjects()->loadShaderFile("Plane");
     
@@ -124,17 +122,9 @@ void RenderProject::initFunction()
 	bRenderer().getObjects()->createSprite("fogSprite", fogMaterial);
 	/* END postprocessing stuff */
     
-    
-    
-    
-    
     // Set game to initial state
     resetGame();
     
-    
-    
-
-
 	// Update render queue
 	updateRenderQueue("camera", 0.0f, 0.0);
 }
@@ -192,8 +182,6 @@ void RenderProject::loopFunction(const double &deltaTime, const double &elapsedT
             _running = false;
         }
     }
-    
-    
 
     //// Draw Scene and do post processing ////
     
@@ -227,12 +215,6 @@ void RenderProject::loopFunction(const double &deltaTime, const double &elapsedT
 
 
     bRenderer().getModelRenderer()->drawModel(bRenderer().getObjects()->getModel("fogSprite"), modelMatrix, _viewMatrixHUD, vmml::Matrix4f::IDENTITY, std::vector<std::string>({}), false);
-    
-    /*modelMatrix = vmml::create_translation(vmml::Vector3f(0.0f, 0.0f, -0.6));
-    
-    bRenderer().getModelRenderer()->drawModel(bRenderer().getObjects()->getModel("menubackscreen"), modelMatrix, _viewMatrixHUD, vmml::Matrix4f::IDENTITY, std::vector<std::string>({}), false);*/
-    
-    
     
     // Menu screen
     
@@ -290,13 +272,6 @@ void RenderProject::loopFunction(const double &deltaTime, const double &elapsedT
     
 
     /* End postprocessing */
-    
-    /*GLfloat titleScale = 0.5f;
-    vmml::Matrix4f scaling = vmml::create_scaling(vmml::Vector3f(titleScale / bRenderer().getView()->getAspectRatio(), titleScale, titleScale));
-    modelMatrix = vmml::create_translation(vmml::Vector3f(-0.0f, 0.0f, -0.65f)) * scaling;
-    // draw
-    bRenderer().getModelRenderer()->drawModel(bRenderer().getObjects()->getModel("menubackscreen"), modelMatrix, _viewMatrixHUD, vmml::Matrix4f::IDENTITY, std::vector<std::string>({}), false, false);*/
-    
     
     vmml::Vector3f currentPosition = bRenderer().getObjects()->getCamera("camera")->getPosition();
     std::string x = std::to_string(-currentPosition.array[0]);

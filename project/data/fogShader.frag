@@ -34,27 +34,20 @@ void main()
 	vec4 colorScene = texture2D(fogFbo_texture, waveCoords.st);
 	vec4 colorDepthMap = texture2D(depthmap_texture, waveCoords.st);
 	
-	
-	const float LOG2 = 1.442695;
 	//vec4 fogColor = vec4(0.255, 0.412, 0.882, 1.0); // royalblue
     vec4 fogColor = vec4(0.118, 0.565, 1.0, 1.0);
-	//float FogFragCoord = length(colorDepthMap);
 	
 	float FogFragCoord = colorDepthMap.x;
+    
+	// x FogFragCoord = 1.0 - clamp(90.0 * (0.500 - FogFragCoord), 0.0, 1.0);
+	// const float LOG2 = 1.442695;
+	// float fogDensity = 1.8;
+	// // float fogFactor = exp2( -fogDensity * fogDensity * FogFragCoord  * FogFragCoord  * LOG2 );
+	// float fogFactor = exp2( -fogDensity * FogFragCoord * LOG2 );
+	// // float fogFactor = (1 - FogFragCoord) / (1 - 0.3);
+	// fogFactor = clamp(fogFactor, 0.0, 1.0);
+    
+    float fogMixingFactor = 1.0 - clamp(90.0 * (0.500 - FogFragCoord), 0.0, 1.0);
 	
-	float f = 100.0;
-	float n = 0.1;
-	
-	//FogFragCoord = (2 * n) / (f + n - FogFragCoord * (f-n));
-	
-	FogFragCoord = 1.0 - clamp(90.0 * (0.500 - FogFragCoord), 0.0, 1.0);
-	
-	float fogDensity = 1.8;
-	//float fogFactor = exp2( -fogDensity * fogDensity * FogFragCoord  * FogFragCoord  * LOG2 );
-	float fogFactor = exp2( -fogDensity * FogFragCoord * LOG2 );
-	//float fogFactor = (1 - FogFragCoord) / (1 - 0.3);
-	fogFactor = clamp(fogFactor, 0.0, 1.0);
-	
-	
-    gl_FragColor = mix(colorScene, fogColor, FogFragCoord);
+    gl_FragColor = mix(colorScene, fogColor, fogMixingFactor);
 }
